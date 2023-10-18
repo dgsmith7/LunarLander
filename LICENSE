@@ -1,14 +1,6 @@
-// The MIT license for this template is below.  
-// You might want to put your own license file in place of this file for your
-// submission.  See below the MIT license for an example.
-
 MIT License
 
-"1ofX Simple ThreeJS template" 
-Original code by David Gail Smith, February 2022
-Twitter: @davidgailsmith
-http://baconbitscollective.org
-A simple JS starter template for THREE js projects on 1ofX
+Copyright (c) 2023 David G. Smith
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,21 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-//////////////////////////////////////////////////////////////////////////
-//  Example license for your project follows:  
-Title: "The best NFT ever"
-Original code by "an awesome author"
-Maybe add your website of twitter handle or something here.
-
-// Many NFT artists use this license, but pick which ever one suits you best:
-This work is licensed under the following Creattive Commons License:
-Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
-https://creativecommons.org/licenses/by-nc/4.0/
-https://creativecommons.org/licenses/by-nc/4.0/legalcode
-
-//Make attributions for anything that is not your original work.
-//Add license info for libraries used:
-This code uses the THREE.JS library:
-https://threejs.org
-https://github.com/mrdoob/three.js/blob/dev/LICENSE
