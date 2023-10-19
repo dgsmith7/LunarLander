@@ -1,0 +1,23 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-image: url("/assets/images/lunarBG.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: #000; */
+  font-family: orbitron;
+}
+
+#title-image {
+  max-height: 150px;
+  max-width: 150px;
+}
