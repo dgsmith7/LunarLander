@@ -8,9 +8,23 @@ Model: https://nasa3d.arc.nasa.gov/detail/lunarlandernofoil-c
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { components } from "/js/components.js";
 
 let container, scene, camera, renderer, ambLt, dirLt, spotLt, controls;
 let lander;
+
+const pickableObjects = [];
+let intersectedObject;
+const originalMaterials = {};
+const highlightedMaterial = new THREE.MeshBasicMaterial({
+  wireframe: false,
+  color: 0x526f93 /*0x29789f,*/,
+  transparent: true,
+  opacity: 0.8,
+});
+const raycaster = new THREE.Raycaster();
+let intersects;
+const mouse = new THREE.Vector2();
 
 function init() {
   scene = new THREE.Scene();
@@ -31,9 +45,11 @@ function init() {
   setCamera();
   setLights();
   buildRenderer();
-  //document.body.appendChild(container);
-  document.getElementById("keeper").appendChild(container);
+  document.body.appendChild(container);
+  // document.getElementById("keeper").appendChild(container);
   buildIt();
+  document.addEventListener("mousemove", onDocumentMouseMove, false);
+  document.addEventListener("click", onClick);
   addOrbitControls();
   window.addEventListener("resize", onWindowResize);
 }
@@ -60,7 +76,7 @@ function setCamera() {
     1,
     1000
   );
-  camera.position.set(10, 7, 10);
+  camera.position.set(10, 5, 10);
 }
 
 function setLights() {
@@ -93,29 +109,42 @@ function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+  render();
 }
 
 function buildIt() {
-  let geom = new THREE.PlaneGeometry(100, 100);
-  let material = new THREE.MeshPhongMaterial(0.1, 0.1, 0.1);
-  let mesh = new THREE.Mesh(geom, material);
-  mesh.rotateX(-Math.PI / 2);
-  mesh.position.set(0, -3, 0);
-  // scene.add(mesh);
-
   const loader = new GLTFLoader().setPath("assets/model/");
-  loader.load("lunarlandernofoil_carbajal_mod4.gltf", function (gltf) {
-    lander = gltf.scene;
-    lander.position.x = 0;
-    lander.position.y = -3;
-    lander.position.z = 0;
-    lander.castShadows = true;
-    lander.receiveShadows = true;
-    scene.add(gltf.scene);
-    console.log(lander);
-    console.log(lander.children);
-    render();
-  });
+  loader.load(
+    "lunarlandernofoil_carbajal_mod4.gltf",
+    function (gltf) {
+      gltf.scene.traverse(function (child) {
+        if (child.isMesh) {
+          const m = child;
+          m.castShadow = true;
+          pickableObjects.push(m);
+          //store reference to original materials for later
+          originalMaterials[m.id] = m.material;
+        }
+      });
+
+      lander = gltf.scene;
+      lander.position.x = 0;
+      lander.position.y = -3;
+      lander.position.z = 0;
+      lander.castShadows = true;
+      lander.receiveShadows = true;
+      scene.add(gltf.scene);
+      console.log(lander);
+      console.log(lander.children);
+      render();
+    },
+    (xhr) => {
+      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
 }
 
 function addOrbitControls() {
@@ -123,8 +152,53 @@ function addOrbitControls() {
   controls.autoRotate = true;
   controls.autoRotateSpeed = 0.5;
   controls.enablePan = false;
-  controls.minDistance = 10;
+  controls.minDistance = 7;
   controls.maxDistance = 13;
+}
+
+function onDocumentMouseMove(event) {
+  mouse.set(
+    (event.clientX / renderer.domElement.clientWidth) * 2 - 1,
+    -(event.clientY / renderer.domElement.clientHeight) * 2 + 1
+  );
+  raycaster.setFromCamera(mouse, camera);
+  intersects = raycaster.intersectObjects(pickableObjects, true);
+  if (intersects.length > 0) {
+    intersectedObject = intersects[0].object;
+  } else {
+    intersectedObject = null;
+  }
+  // pickableObjects.forEach((o, i) => {
+  //   if (intersectedObject && intersectedObject.name === o.name) {
+  //     console.log(
+  //       "For id# " +
+  //         intersectedObject.id +
+  //         " - " +
+  //         components.get(intersectedObject.id)
+  //     );
+  //     pickableObjects[i].material = highlightedMaterial;
+  //   } else {
+  //     pickableObjects[i].material = originalMaterials[o.name];
+  //   }
+  // });
+
+  let which = [];
+  if (intersectedObject) {
+    which = components.get(intersectedObject.id).children;
+  }
+  pickableObjects.forEach((o, i) => {
+    if (intersectedObject && which.includes(o.id)) {
+      pickableObjects[i].material = highlightedMaterial;
+    } else {
+      pickableObjects[i].material = originalMaterials[o.id];
+    }
+  });
+}
+
+function onClick(event) {
+  intersectedObject != null
+    ? console.log(components.get(intersectedObject.id).title)
+    : console.log("null");
 }
 
 init();

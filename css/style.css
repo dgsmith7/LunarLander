@@ -13,11 +13,10 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-color: #000; */
+  background-color: #000000;
   font-family: orbitron;
 }
 
-#title-image {
-  max-height: 150px;
-  max-width: 150px;
+#title {
+  z-index: -1;
 }
