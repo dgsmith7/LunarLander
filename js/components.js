@@ -1121,3 +1121,77 @@ components.set(198, {
   title: "Descent engine skirt",
   children: [38, 196, 197, 198],
 });
+
+export let blurbs = new Map();
+blurbs.set(
+  "S-Band antenna",
+  "Telemetry, TV, voice, and range communications with Earth were all via the S-band antenna. There were redundant tranceivers and equipment for both S-band and VHF. "
+);
+blurbs.set(
+  "S-Band in-flight antenna",
+  "Telemetry, TV, voice, and range communications with Earth were all via the S-band antenna. There were redundant tranceivers and equipment for both S-band and VHF. "
+);
+blurbs.set(
+  "VHF antennas",
+  "VHF was used for communications between the astronauts and the Lunar Module, and the Lunar Module and orbiting Command and Service Module. There were redundant tranceivers and equipment for both S-band and VHF. "
+);
+blurbs.set(
+  "Rendezvous radar antenna",
+  "Guidance and navigation control were provided by a radar ranging system, an inertial measurement unit consisting of gyroscopes and accelerometers, and the Apollo guidance computer."
+);
+blurbs.set(
+  "Ingress/egress hatch",
+  "The forward hatch tunnel is beneath the center instrument console. The forward hatch is rectangular and is the one through which the astronauts will go to reach the lunar surface. "
+);
+blurbs.set(
+  "Reaction control thruster assemblies",
+  "Maneuvering was achieved via the reaction control system, which consisted of the four thrust modules, each one composed of four 450 N thrust chambers and nozzles pointing in different directions. "
+);
+blurbs.set(
+  "Ascent stage",
+  "The ascent stage provides shelter and a base of operations for the two LM crewmen during their lunar stay. The crewmen use it to return to lunar orbit and rendezvous with the orbiting Command and Service Module. After the crewmen have transferred to the CM, the ascent stage is jettisoned and remains in orbit around the moon."
+);
+blurbs.set(
+  "Overhead hatch",
+  "The round docking hatch (32 inches in diameter) is at the upper end of the docking tunnel and is used for the transfer of crewmen back and forth from the command module."
+);
+blurbs.set(
+  "Tracking Light",
+  "These high-intensity 9,000 beam candle-power flashing lights used for tracking the Landing Module from the Command and Serice Module both visually and up to 400 nautical miles using a sextant on-board the Command and Service Module."
+);
+blurbs.set(
+  "Docking lights",
+  "These incandescent, fixed-intensity lights were visible up to 1,000 feet and used for docking the Landing Module to the Command Service Module after liftoff from the lunar surface."
+);
+blurbs.set(
+  "Mesa",
+  "The descent stage is a modified octagonal shape. It is 10 feet, 7 inches high (with gear extended), 14 feet, 1 inch at its widest point, and has a diameter of 31 feet diagonally across the landing gear. It consists primarily of the descent engine and its propellant tanks, the landing gear assembly, batteries, a section to house scientific equipment for use on the moon, and extra oxygen, water, and helium tanks. The stage serves as a launching platform for the ascent stage and will remain on the moon. It is constructed of aluminum alloy chem-milled to reduce weight. (Chem-milling is a processof removing metal by chemical action.)"
+);
+blurbs.set(
+  "Plume deflectors",
+  "The shields protect other components from the blast of the Reaction Control Thruster Assemblies."
+);
+blurbs.set(
+  "Egress platform",
+  "Outside the forward hatch is a platform and a ladder mounted to the forward landing gear strut."
+);
+blurbs.set(
+  "Ladder",
+  "Outside the forward hatch is a platform and a ladder mounted to the forward landing gear strut."
+);
+blurbs.set(
+  "Landing gear",
+  "The landing gear is of the cantilever type and consists of four legs connected to the outriggers. The legs extend from the front, rear, and sides of the LM. Each landing gear leg consists of a primary strut and footpad, a drive-out mechanism, two secondary struts, two downlock mechanisms, and a truss. Each strut has a shock-absorbing insert of crushable aluminum honeycomb material to soften the landing impact. The forward landing gear has a boarding ladder on the primary strut which the astronauts will climb to and from the forward hatch."
+);
+blurbs.set(
+  "Landing pads",
+  "The footpads, about 37 inches in diameter, are made of two layers o f spun aluminum bonded to an aluminum honeycomb core."
+);
+blurbs.set(
+  "EVA antenna",
+  "The EVA antenna is an omni-directional VHF antenna used for communication between the Lunar Module and the Extravehicular Activity crew."
+);
+blurbs.set(
+  "Descent engine skirt",
+  "The descent engine provides the power for the complex maneuvers required to take the lunar module from orbit down to a soft landing on the moon. It is a throttleable, gimballed engine which provides from 1,050 to 9,710 pounds of thrust."
+);
