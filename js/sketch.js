@@ -25,6 +25,8 @@ const highlightedMaterial = new THREE.MeshBasicMaterial({
 const raycaster = new THREE.Raycaster();
 let intersects;
 const mouse = new THREE.Vector2();
+let holder = document.querySelector("#holder");
+let which;
 
 function init() {
   scene = new THREE.Scene();
@@ -66,6 +68,7 @@ function render() {
 
 function updateScene() {
   // put any scene updates here (rotation of objects for example, etc)
+
   controls.update();
 }
 
@@ -161,6 +164,10 @@ function onDocumentMouseMove(event) {
     (event.clientX / renderer.domElement.clientWidth) * 2 - 1,
     -(event.clientY / renderer.domElement.clientHeight) * 2 + 1
   );
+
+  holder.style.left = event.clientX + 25 + "px";
+  holder.style.top = event.clientY + 25 + "px";
+
   raycaster.setFromCamera(mouse, camera);
   intersects = raycaster.intersectObjects(pickableObjects, true);
   if (intersects.length > 0) {
@@ -182,9 +189,16 @@ function onDocumentMouseMove(event) {
   //   }
   // });
 
-  let which = [];
+  which = [];
   if (intersectedObject) {
     which = components.get(intersectedObject.id).children;
+    holder.innerHTML = components.get(intersectedObject.id).title;
+    holder.style.padding = "5px";
+    holder.style.border = "1px white solid";
+  } else {
+    holder.innerHTML = "";
+    holder.style.padding = "0px";
+    holder.style.border = "none";
   }
   pickableObjects.forEach((o, i) => {
     if (intersectedObject && which.includes(o.id)) {
@@ -199,6 +213,15 @@ function onClick(event) {
   intersectedObject != null
     ? console.log(components.get(intersectedObject.id).title)
     : console.log("null");
+
+  /*
+stop rotation
+stop raycasting
+rotate into position with easing?
+invert materials
+display modal
+start all of that back up when modal closed
+    */
 }
 
 init();
