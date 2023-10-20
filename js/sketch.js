@@ -1,14 +1,13 @@
 /*//////////////////////////////////////////////////////////
-"Lunar LAnder THREE JS Website Demo" 
+"Lunar Lander THREE JS Website Demo" 
 Original code by David Gail Smith, October 2023
 Twitter: @davidgailsmith
 http://www.davidgailsmith.com
-Model: https://nasa3d.arc.nasa.gov/detail/lunarlandernofoil-c
 */ //////////////////////////////////////////////////////////
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { components } from "/js/components.js";
+import { components, blurbs } from "/js/components.js";
 
 let container, scene, camera, renderer, ambLt, dirLt, spotLt, controls;
 let lander;
@@ -30,28 +29,16 @@ let which;
 
 function init() {
   scene = new THREE.Scene();
-  //  scene.background = new THREE.Color("#000");
-
-  // const axesHelper = new THREE.AxesHelper(5);
-  // scene.add(axesHelper);
-
-  // //Load background texture
-  // const loader = new THREE.TextureLoader();
-  // loader.load(
-  //   "https://images-assets.nasa.gov/image/as11-44-6552/as11-44-6552~orig.jpg",
-  //   function (texture) {
-  //     scene.background = texture;
-  //   }
-  // );
-
   setCamera();
   setLights();
   buildRenderer();
   document.body.appendChild(container);
-  // document.getElementById("keeper").appendChild(container);
   buildIt();
   document.addEventListener("mousemove", onDocumentMouseMove, false);
   document.addEventListener("click", onClick);
+  document
+    .querySelector("#rotate-control")
+    .addEventListener("click", toggleRotate);
   addOrbitControls();
   window.addEventListener("resize", onWindowResize);
 }
@@ -68,7 +55,6 @@ function render() {
 
 function updateScene() {
   // put any scene updates here (rotation of objects for example, etc)
-
   controls.update();
 }
 
@@ -104,7 +90,6 @@ function buildRenderer() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.autoClear = 1;
   renderer.setClearColor(0x000000, 0);
-
   container = renderer.domElement;
 }
 
@@ -155,7 +140,7 @@ function addOrbitControls() {
   controls.autoRotate = true;
   controls.autoRotateSpeed = 0.5;
   controls.enablePan = false;
-  controls.minDistance = 7;
+  controls.minDistance = 3;
   controls.maxDistance = 13;
 }
 
@@ -164,10 +149,10 @@ function onDocumentMouseMove(event) {
     (event.clientX / renderer.domElement.clientWidth) * 2 - 1,
     -(event.clientY / renderer.domElement.clientHeight) * 2 + 1
   );
-
+  //position "tooltip" box
   holder.style.left = event.clientX + 25 + "px";
   holder.style.top = event.clientY + 25 + "px";
-
+  // look where mouse points and collect mesh in path
   raycaster.setFromCamera(mouse, camera);
   intersects = raycaster.intersectObjects(pickableObjects, true);
   if (intersects.length > 0) {
@@ -175,31 +160,21 @@ function onDocumentMouseMove(event) {
   } else {
     intersectedObject = null;
   }
-  // pickableObjects.forEach((o, i) => {
-  //   if (intersectedObject && intersectedObject.name === o.name) {
-  //     console.log(
-  //       "For id# " +
-  //         intersectedObject.id +
-  //         " - " +
-  //         components.get(intersectedObject.id)
-  //     );
-  //     pickableObjects[i].material = highlightedMaterial;
-  //   } else {
-  //     pickableObjects[i].material = originalMaterials[o.name];
-  //   }
-  // });
-
+  // use componenets data to highlight all meshes in particular system
   which = [];
   if (intersectedObject) {
+    // show tooltip with correct data based on hover position
     which = components.get(intersectedObject.id).children;
     holder.innerHTML = components.get(intersectedObject.id).title;
     holder.style.padding = "5px";
     holder.style.border = "1px white solid";
   } else {
+    // clear box when not hovering over anything
     holder.innerHTML = "";
     holder.style.padding = "0px";
     holder.style.border = "none";
   }
+  // highlight the system being hovered over
   pickableObjects.forEach((o, i) => {
     if (intersectedObject && which.includes(o.id)) {
       pickableObjects[i].material = highlightedMaterial;
@@ -210,18 +185,23 @@ function onDocumentMouseMove(event) {
 }
 
 function onClick(event) {
-  intersectedObject != null
-    ? console.log(components.get(intersectedObject.id).title)
-    : console.log("null");
+  // if clicked on system, show the expounding info
+  if (intersectedObject != null) {
+    // console.log(blurbs.get(components.get(intersectedObject.id).title));
+    document.querySelector("#blurbModalLabel").innerHTML = components.get(
+      intersectedObject.id
+    ).title;
+    document.querySelector("#blurb-area").innerHTML = blurbs.get(
+      components.get(intersectedObject.id).title
+    );
+    document.querySelector("#launch-modal").click();
+  } else {
+    console.log("null");
+  }
+}
 
-  /*
-stop rotation
-stop raycasting
-rotate into position with easing?
-invert materials
-display modal
-start all of that back up when modal closed
-    */
+function toggleRotate() {
+  controls.autoRotate = !controls.autoRotate;
 }
 
 init();

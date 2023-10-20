@@ -5,18 +5,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
   <title>Lunar Lander</title>
   <meta name="author" content="David G. Smith">
-  <meta name="description" content="A demo of a website using THREE-JS">
+  <meta name="description" content="A demo using THREE-JS for informational purposes">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body id="ourWindow">
+<body>
   <script type="importmap">
     {
       "imports": {
@@ -30,16 +28,35 @@
       <div class="position-absolute top-0 end-0 ">
         <div id="title" class="text-end col-12 display-1 text-light px-3 pt-3">
           Apollo Lunar Module (Eagle)</div>
-        <div id="note" class="text-end col-12 text-light px-3">Hover and
+        <div id="note" class="text-end col-12 text-light p-3">Hover, drag, scroll, and
           click
           to identify components</div>
+        <div class="text-end col-12 text-light p-3"><button id="rotate-control" type="button"
+            class="btn btn-info">Toggle auto rotation</button></div>
       </div>
     </div>
-
+    <!-- Button trigger modal -->
+    <button id="launch-modal" type="button" class="btn btn-primary d-none" data-bs-toggle="modal"
+      data-bs-target="#blurbModal">
+      Launch demo modal
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="blurbModal" tabindex="-1" aria-labelledby="blurbModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="blurb-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-3" id="blurbModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div id="blurb-area" class="modal-body fs-5">
+            ...
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div id="holder" class="rounded"></div>
   <script src="./js/bootstrap.min.js"></script>
-  <script type="module" src="./js/index.js"></script>
   <script type="module" src="./js/sketch.js"></script>
 </body>
 

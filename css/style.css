@@ -22,10 +22,23 @@ body {
 }
 
 #holder {
-  /* max-height: 50px;
-  max-width: 200px; */
   background: #526f93;
   position: absolute;
   color: white;
   border: 1px white solid;
+}
+
+#rotate-control {
+  background: #526f93;
+  opacity: 0.75;
+  color: white;
+  border: 1px white solid;
+}
+
+#blurb-content {
+  background: #526f93;
+  opacity: 0.75;
+  color: white;
+  border: 1px white solid;
+  font-family: orbitron;
 }

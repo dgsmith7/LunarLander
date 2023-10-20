@@ -1,4 +1,4 @@
-export const components = new Map();
+export const components = new Map(); // each mesh id and its related mesh ids for each particular system
 components.set(88, {
   title: "S-Band antenna",
   children: [
@@ -1122,7 +1122,7 @@ components.set(198, {
   children: [38, 196, 197, 198],
 });
 
-export let blurbs = new Map();
+export let blurbs = new Map(); // expounding system info for each system named in "componenet" above
 blurbs.set(
   "S-Band antenna",
   "Telemetry, TV, voice, and range communications with Earth were all via the S-band antenna. There were redundant tranceivers and equipment for both S-band and VHF. "
