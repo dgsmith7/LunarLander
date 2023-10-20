@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "three": "0.157.0"
-  }
+  },
+  "name": "lunar-lander",
+  "description": "Background image: https://images-assets.nasa.gov/image/as11-44-6552/as11-44-6552~orig.jpg",
+  "version": "1.0.0",
+  "main": "sketch.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dgsmith7/LunarLander.git"
+  },
+  "author": "David G. Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dgsmith7/LunarLander/issues"
+  },
+  "homepage": "https://github.com/dgsmith7/LunarLander#readme"
 }

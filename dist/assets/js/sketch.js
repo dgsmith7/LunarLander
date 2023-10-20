@@ -17,7 +17,7 @@ let intersectedObject;
 const originalMaterials = {};
 const highlightedMaterial = new THREE.MeshBasicMaterial({
   wireframe: false,
-  color: 0x526f93 /*0x29789f,*/,
+  color: 0x526f93,
   transparent: true,
   opacity: 0.8,
 });
