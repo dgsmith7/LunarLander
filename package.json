@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "gh-pages": "^6.0.0",
     "three": "0.157.0"
   },
   "name": "lunar-lander",
