@@ -6,7 +6,7 @@
   "name": "lunar-lander",
   "description": "Background image: https://images-assets.nasa.gov/image/as11-44-6552/as11-44-6552~orig.jpg",
   "version": "1.0.0",
-  "main": "sketch.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gh-pages -d dist"
