@@ -5,10 +5,9 @@
   "name": "lunar-lander",
   "description": "Background image: https://images-assets.nasa.gov/image/as11-44-6552/as11-44-6552~orig.jpg",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": "true",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d dist"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/dgsmith7/LunarLander/issues"
   },
-  "homepage": "https://github.com/dgsmith7/LunarLander#readme"
+  "homepage": "https://github.com/dgsmith7/LunarLander#readme",
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
 }
