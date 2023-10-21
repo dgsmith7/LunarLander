@@ -7,7 +7,7 @@ http://www.davidgailsmith.com
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { components, blurbs } from "/js/components.js";
+import { components, blurbs } from "/dist/js/components.js";
 
 let container, scene, camera, renderer, ambLt, dirLt, spotLt, controls;
 let lander;
