@@ -4,10 +4,21 @@ Original code by David Gail Smith, October 2023
 Twitter: @davidgailsmith
 http://www.davidgailsmith.com
 */ //////////////////////////////////////////////////////////
-import * as THREE from "three";
+// import * as THREE from "three";
+import {
+  MeshBasicMaterial,
+  Raycaster,
+  Vector2,
+  Scene,
+  PerspectiveCamera,
+  AmbientLight,
+  DirectionalLight,
+  SpotLight,
+  WebGLRenderer,
+} from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { components, blurbs } from "/js/components.js";
+import { components, blurbs } from "./components.js";
 
 let container, scene, camera, renderer, ambLt, dirLt, spotLt, controls;
 let lander;
@@ -15,20 +26,20 @@ let lander;
 const pickableObjects = [];
 let intersectedObject;
 const originalMaterials = {};
-const highlightedMaterial = new THREE.MeshBasicMaterial({
+const highlightedMaterial = new MeshBasicMaterial({
   wireframe: false,
   color: 0x526f93,
   transparent: true,
   opacity: 0.8,
 });
-const raycaster = new THREE.Raycaster();
+const raycaster = new Raycaster();
 let intersects;
-const mouse = new THREE.Vector2();
+const mouse = new Vector2();
 let holder = document.querySelector("#holder");
 let which;
 
 function init() {
-  scene = new THREE.Scene();
+  scene = new Scene();
   setCamera();
   setLights();
   buildRenderer();
@@ -59,7 +70,7 @@ function updateScene() {
 }
 
 function setCamera() {
-  camera = new THREE.PerspectiveCamera(
+  camera = new PerspectiveCamera(
     45,
     window.innerWidth / window.innerHeight,
     1,
@@ -69,20 +80,20 @@ function setCamera() {
 }
 
 function setLights() {
-  ambLt = new THREE.AmbientLight(0xffffff, 0.65);
+  ambLt = new AmbientLight(0xffffff, 0.65);
   scene.add(ambLt);
-  dirLt = new THREE.DirectionalLight(0xffffff, 0.75);
+  dirLt = new DirectionalLight(0xffffff, 0.75);
   dirLt.position.set(4, 3, 6);
   dirLt.castShadows = true;
   scene.add(dirLt);
-  spotLt = new THREE.SpotLight(0xffffff, 0.85);
+  spotLt = new SpotLight(0xffffff, 0.85);
   spotLt.position.set(4, 3, 6);
   spotLt.decay = 2.0;
   scene.add(spotLt);
 }
 
 function buildRenderer() {
-  renderer = new THREE.WebGLRenderer({
+  renderer = new WebGLRenderer({
     alpha: true,
     antialias: false,
   });
