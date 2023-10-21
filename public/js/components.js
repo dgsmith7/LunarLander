@@ -491,9 +491,9 @@ components.set(183, {
   title: "Docking lights",
   children: [125, 126, 127, 183],
 });
-components.set(168, { title: "Mesa", children: [168, 199, 200] });
-components.set(199, { title: "Mesa", children: [168, 199, 200] });
-components.set(200, { title: "Mesa", children: [168, 199, 200] });
+components.set(168, { title: "Mesa", children: [168] });
+components.set(199, { title: "Nation", children: [199] });
+components.set(200, { title: "Flag", children: [200] });
 components.set(128, {
   title: "Plume deflectors",
   children: [
@@ -1166,6 +1166,14 @@ blurbs.set(
 blurbs.set(
   "Mesa",
   "The descent stage is a modified octagonal shape. It is 10 feet, 7 inches high (with gear extended), 14 feet, 1 inch at its widest point, and has a diameter of 31 feet diagonally across the landing gear. It consists primarily of the descent engine and its propellant tanks, the landing gear assembly, batteries, a section to house scientific equipment for use on the moon, and extra oxygen, water, and helium tanks. The stage serves as a launching platform for the ascent stage and will remain on the moon. It is constructed of aluminum alloy chem-milled to reduce weight. (Chem-milling is a processof removing metal by chemical action.)"
+);
+blurbs.set(
+  "Nation",
+  "The national effort that enabled Astronaut Neil Armstrong to speak 'That’s one small step for a man. One giant leap for mankind.' as he stepped onto the lunar surface fulfilled a dream as old as humanity. Project Apollo's goals went beyond landing Americans on the moon and returning them safely to Earth. They included: establishing the technology to meet other national interests in space, achieving preeminence in space for the United States, carrying out a program of scientific exploration of the Moon, and developing human capability to work in the lunar environment."
+);
+blurbs.set(
+  "Flag",
+  "One of the most iconic images from the Apollo 11 mission is of Buzz Aldrin saluting the American flag on the surface of the Moon. The decision to plant the American flag on the Moon was made rather late in the lead-up to the mission."
 );
 blurbs.set(
   "Plume deflectors",
