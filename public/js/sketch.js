@@ -18,7 +18,7 @@ import {
 } from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { components, blurbs } from "./components.js";
+import { components, blurbs } from "../js/components.js";
 
 let container, scene, camera, renderer, ambLt, dirLt, spotLt, controls;
 let lander;
@@ -112,7 +112,7 @@ function onWindowResize() {
 }
 
 function buildIt() {
-  const loader = new GLTFLoader().setPath("assets/model/");
+  const loader = new GLTFLoader().setPath("../model/");
   loader.load(
     "lunarlandernofoil_carbajal_mod4.gltf",
     function (gltf) {
